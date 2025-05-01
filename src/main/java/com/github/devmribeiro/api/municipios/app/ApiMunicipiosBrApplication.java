@@ -1,0 +1,11 @@
+package com.github.devmribeiro.api.municipios.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ApiMunicipiosBrApplication {
+	public static void main(String[] args) {
+		SpringApplication.run(ApiMunicipiosBrApplication.class, args);
+	}
+}
