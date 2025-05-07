@@ -16,18 +16,28 @@ public class Municipio {
 	@Column(name = "municipio_id")
 	private Long municipioId = null;
 
+	@Column(name = "cod_mun")
+	private Integer codMunicipio = null;
+
+	@Column(name = "nome_mun")
 	private String nome = null;
 
+	@Column(name = "sigla_uf")
 	private String uf = null;
 
-	public Municipio(Long municipioId, String nome, String uf) {
+	public Municipio(Long municipioId, Integer codMunicipio, String nome, String uf) {
 		this.municipioId = municipioId;
+		this.codMunicipio = codMunicipio;
 		this.nome = nome;
 		this.uf = uf;
 	}
 
 	public Long getMunicipioId() {
 		return municipioId;
+	}
+
+	public Integer getCodMunicipio() {
+		return codMunicipio;
 	}
 
 	public String getNome() {
