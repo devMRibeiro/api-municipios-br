@@ -2,9 +2,10 @@ package com.github.devmribeiro.api.municipios.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,39 +13,45 @@ import jakarta.persistence.Table;
 public class Municipio {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "municipio_id")
-	private Long municipioId = null;
-
-	@Column(name = "cod_mun")
+	@Column(name = "mun_cod")
 	private Integer codMunicipio = null;
 
-	@Column(name = "nome_mun")
+	@Column(name = "mun_nome")
 	private String nome = null;
 
-	@Column(name = "sigla_uf")
-	private String uf = null;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mun_uf_cod", referencedColumnName = "uf_cod")
+    private UnidadeFederativa uf;
 
-	public Municipio(Long municipioId, Integer codMunicipio, String nome, String uf) {
-		this.municipioId = municipioId;
+	public Municipio() { }
+	
+	public Municipio(Long municipioId, Integer codMunicipio, String nome, UnidadeFederativa uf) {
 		this.codMunicipio = codMunicipio;
 		this.nome = nome;
 		this.uf = uf;
-	}
-
-	public Long getMunicipioId() {
-		return municipioId;
 	}
 
 	public Integer getCodMunicipio() {
 		return codMunicipio;
 	}
 
+	public void setCodMunicipio(Integer codMunicipio) {
+		this.codMunicipio = codMunicipio;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
-	public String getUf() {
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public UnidadeFederativa getUf() {
 		return uf;
+	}
+
+	public void setUf(UnidadeFederativa uf) {
+		this.uf = uf;
 	}
 }
