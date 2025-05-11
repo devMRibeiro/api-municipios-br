@@ -13,6 +13,9 @@ import com.github.devmribeiro.api.municipios.model.Municipio;
 public interface MunicipioRepository extends JpaRepository<Municipio, Long> {
 	Municipio findByNome(String nome);
 
-	@Query(value = "SELECT m.* FROM municipio m JOIN unidade_federativa uf ON m.mun_uf_cod = uf.uf_cod WHERE uf.uf_sigla = :sigla", nativeQuery = true)
+	@Query(value = "SELECT m.* FROM municipio m JOIN FETCH unidade_federativa uf ON m.mun_uf_cod = uf.uf_cod WHERE uf.uf_sigla = :sigla", nativeQuery = true)
 	List<Municipio> findByUfSigla(@Param("sigla") String sigla);
+	
+	@Query("SELECT m FROM Municipio m JOIN FETCH m.uf")
+	List<Municipio> findAll();
 }
