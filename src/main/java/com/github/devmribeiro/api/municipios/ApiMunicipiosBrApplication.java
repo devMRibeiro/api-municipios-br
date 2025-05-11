@@ -1,4 +1,4 @@
-package com.github.devmribeiro.api.municipios.app;
+package com.github.devmribeiro.api.municipios;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
